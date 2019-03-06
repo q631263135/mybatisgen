@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.FlDefineMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.FlDefine">
+    <id column="R_ID" jdbcType="DECIMAL" property="rId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="O_TYPE" jdbcType="DECIMAL" property="oType" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="MENU_ID" jdbcType="VARCHAR" property="menuId" />
+    <result column="USER_SEARCH" jdbcType="CHAR" property="userSearch" />
+    <result column="EXPRESS" jdbcType="VARCHAR" property="express" />
+    <result column="EXCLUDE_COL_CODES" jdbcType="VARCHAR" property="excludeColCodes" />
+    <result column="CAN_OPERATE" jdbcType="DECIMAL" property="canOperate" />
+    <result column="TYPE" jdbcType="DECIMAL" property="type" />
+    <result column="OPERATE_TYPE" jdbcType="DECIMAL" property="operateType" />
+    <result column="FORM_ID" jdbcType="DECIMAL" property="formId" />
+    <result column="FLOW_ID" jdbcType="DECIMAL" property="flowId" />
+    <result column="CAN_VIEW" jdbcType="DECIMAL" property="canView" />
+    <result column="HIDDEN_PARAMS" jdbcType="VARCHAR" property="hiddenParams" />
+    <result column="PARAMS_URL" jdbcType="VARCHAR" property="paramsUrl" />
+    <result column="CAN_DELETE" jdbcType="DECIMAL" property="canDelete" />
+    <result column="CAN_ADD" jdbcType="DECIMAL" property="canAdd" />
+    <result column="CAN_UPDATE" jdbcType="DECIMAL" property="canUpdate" />
+    <result column="CAN_EXPORT" jdbcType="DECIMAL" property="canExport" />
+    <result column="STEP_MODULE_ID" jdbcType="DECIMAL" property="stepModuleId" />
+    <result column="MULTIPLE_SELECT" jdbcType="DECIMAL" property="multipleSelect" />
+    <result column="TOOL_PAGE_URL" jdbcType="VARCHAR" property="toolPageUrl" />
+    <result column="HIDDEN_PARAMS_FOR_ADD" jdbcType="VARCHAR" property="hiddenParamsForAdd" />
+    <result column="HIDDEN_PARAMS_FOR_EDIT" jdbcType="VARCHAR" property="hiddenParamsForEdit" />
+    <result column="PARAMS_URL_FOR_ADD" jdbcType="VARCHAR" property="paramsUrlForAdd" />
+    <result column="PARAMS_URL_FOR_EDIT" jdbcType="VARCHAR" property="paramsUrlForEdit" />
+    <result column="HIDDEN_PARAMS_FOR_DELETE" jdbcType="VARCHAR" property="hiddenParamsForDelete" />
+    <result column="PARAMS_URL_FOR_DELETE" jdbcType="VARCHAR" property="paramsUrlForDelete" />
+    <result column="PARAMS_VALUE" jdbcType="VARCHAR" property="paramsValue" />
+    <result column="PARAMS_VALUE_FOR_ADD" jdbcType="VARCHAR" property="paramsValueForAdd" />
+    <result column="PARAMS_VALUE_FOR_EDIT" jdbcType="VARCHAR" property="paramsValueForEdit" />
+    <result column="PARAMS_VALUE_FOR_DELETE" jdbcType="VARCHAR" property="paramsValueForDelete" />
+    <result column="SELF_QUERY_CONDITION" jdbcType="VARCHAR" property="selfQueryCondition" />
+    <result column="SHOW_PROCESS_FLOW_BTN" jdbcType="DECIMAL" property="showProcessFlowBtn" />
+    <result column="FIELD2" jdbcType="VARCHAR" property="field2" />
+    <result column="FIELD3" jdbcType="VARCHAR" property="field3" />
+    <result column="FIELD4" jdbcType="VARCHAR" property="field4" />
+    <result column="FIELD5" jdbcType="VARCHAR" property="field5" />
+    <result column="TABLE_CODE" jdbcType="VARCHAR" property="tableCode" />
+    <result column="FIELD1" jdbcType="VARCHAR" property="field1" />
+    <result column="SELF_TABLE_INFO" jdbcType="VARCHAR" property="selfTableInfo" />
+    <result column="RPT_CANDELETE" jdbcType="CHAR" property="rptCandelete" />
+    <result column="RPT_CANEDIT" jdbcType="CHAR" property="rptCanedit" />
+    <result column="CAN_BATCH_PROCESSING" jdbcType="DECIMAL" property="canBatchProcessing" />
+    <result column="CAN_MAINTAIN" jdbcType="DECIMAL" property="canMaintain" />
+    <result column="NO_FLOW_PROXYID" jdbcType="DECIMAL" property="noFlowProxyid" />
+    <result column="COL_FIELD_PARAM" jdbcType="VARCHAR" property="colFieldParam" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.entity.FlDefineWithBLOBs">
+    <result column="SQL" jdbcType="CLOB" property="sql" />
+    <result column="BEFORE_SQL" jdbcType="CLOB" property="beforeSql" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    R_ID, NAME, O_TYPE, TABLE_NAME, MENU_ID, USER_SEARCH, EXPRESS, EXCLUDE_COL_CODES, 
+    CAN_OPERATE, TYPE, OPERATE_TYPE, FORM_ID, FLOW_ID, CAN_VIEW, HIDDEN_PARAMS, PARAMS_URL, 
+    CAN_DELETE, CAN_ADD, CAN_UPDATE, CAN_EXPORT, STEP_MODULE_ID, MULTIPLE_SELECT, TOOL_PAGE_URL, 
+    HIDDEN_PARAMS_FOR_ADD, HIDDEN_PARAMS_FOR_EDIT, PARAMS_URL_FOR_ADD, PARAMS_URL_FOR_EDIT, 
+    HIDDEN_PARAMS_FOR_DELETE, PARAMS_URL_FOR_DELETE, PARAMS_VALUE, PARAMS_VALUE_FOR_ADD, 
+    PARAMS_VALUE_FOR_EDIT, PARAMS_VALUE_FOR_DELETE, SELF_QUERY_CONDITION, SHOW_PROCESS_FLOW_BTN, 
+    FIELD2, FIELD3, FIELD4, FIELD5, TABLE_CODE, FIELD1, SELF_TABLE_INFO, RPT_CANDELETE, 
+    RPT_CANEDIT, CAN_BATCH_PROCESSING, CAN_MAINTAIN, NO_FLOW_PROXYID, COL_FIELD_PARAM
+  </sql>
+  <sql id="Blob_Column_List">
+    SQL, BEFORE_SQL
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.entity.FlDefineExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from FL_DEFINE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.entity.FlDefineExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FL_DEFINE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from FL_DEFINE
+    where R_ID = #{rId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from FL_DEFINE
+    where R_ID = #{rId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.entity.FlDefineExample">
+    delete from FL_DEFINE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.FlDefineWithBLOBs">
+    insert into FL_DEFINE (R_ID, NAME, O_TYPE, 
+      TABLE_NAME, MENU_ID, USER_SEARCH, 
+      EXPRESS, EXCLUDE_COL_CODES, CAN_OPERATE, 
+      TYPE, OPERATE_TYPE, FORM_ID, 
+      FLOW_ID, CAN_VIEW, HIDDEN_PARAMS, 
+      PARAMS_URL, CAN_DELETE, CAN_ADD, 
+      CAN_UPDATE, CAN_EXPORT, STEP_MODULE_ID, 
+      MULTIPLE_SELECT, TOOL_PAGE_URL, HIDDEN_PARAMS_FOR_ADD, 
+      HIDDEN_PARAMS_FOR_EDIT, PARAMS_URL_FOR_ADD, PARAMS_URL_FOR_EDIT, 
+      HIDDEN_PARAMS_FOR_DELETE, PARAMS_URL_FOR_DELETE, 
+      PARAMS_VALUE, PARAMS_VALUE_FOR_ADD, PARAMS_VALUE_FOR_EDIT, 
+      PARAMS_VALUE_FOR_DELETE, SELF_QUERY_CONDITION, 
+      SHOW_PROCESS_FLOW_BTN, FIELD2, FIELD3, 
+      FIELD4, FIELD5, TABLE_CODE, 
+      FIELD1, SELF_TABLE_INFO, RPT_CANDELETE, 
+      RPT_CANEDIT, CAN_BATCH_PROCESSING, CAN_MAINTAIN, 
+      NO_FLOW_PROXYID, COL_FIELD_PARAM, SQL, 
+      BEFORE_SQL)
+    values (#{rId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{oType,jdbcType=DECIMAL}, 
+      #{tableName,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, #{userSearch,jdbcType=CHAR}, 
+      #{express,jdbcType=VARCHAR}, #{excludeColCodes,jdbcType=VARCHAR}, #{canOperate,jdbcType=DECIMAL}, 
+      #{type,jdbcType=DECIMAL}, #{operateType,jdbcType=DECIMAL}, #{formId,jdbcType=DECIMAL}, 
+      #{flowId,jdbcType=DECIMAL}, #{canView,jdbcType=DECIMAL}, #{hiddenParams,jdbcType=VARCHAR}, 
+      #{paramsUrl,jdbcType=VARCHAR}, #{canDelete,jdbcType=DECIMAL}, #{canAdd,jdbcType=DECIMAL}, 
+      #{canUpdate,jdbcType=DECIMAL}, #{canExport,jdbcType=DECIMAL}, #{stepModuleId,jdbcType=DECIMAL}, 
+      #{multipleSelect,jdbcType=DECIMAL}, #{toolPageUrl,jdbcType=VARCHAR}, #{hiddenParamsForAdd,jdbcType=VARCHAR}, 
+      #{hiddenParamsForEdit,jdbcType=VARCHAR}, #{paramsUrlForAdd,jdbcType=VARCHAR}, #{paramsUrlForEdit,jdbcType=VARCHAR}, 
+      #{hiddenParamsForDelete,jdbcType=VARCHAR}, #{paramsUrlForDelete,jdbcType=VARCHAR}, 
+      #{paramsValue,jdbcType=VARCHAR}, #{paramsValueForAdd,jdbcType=VARCHAR}, #{paramsValueForEdit,jdbcType=VARCHAR}, 
+      #{paramsValueForDelete,jdbcType=VARCHAR}, #{selfQueryCondition,jdbcType=VARCHAR}, 
+      #{showProcessFlowBtn,jdbcType=DECIMAL}, #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, 
+      #{field4,jdbcType=VARCHAR}, #{field5,jdbcType=VARCHAR}, #{tableCode,jdbcType=VARCHAR}, 
+      #{field1,jdbcType=VARCHAR}, #{selfTableInfo,jdbcType=VARCHAR}, #{rptCandelete,jdbcType=CHAR}, 
+      #{rptCanedit,jdbcType=CHAR}, #{canBatchProcessing,jdbcType=DECIMAL}, #{canMaintain,jdbcType=DECIMAL}, 
+      #{noFlowProxyid,jdbcType=DECIMAL}, #{colFieldParam,jdbcType=VARCHAR}, #{sql,jdbcType=CLOB}, 
+      #{beforeSql,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.FlDefineWithBLOBs">
+    insert into FL_DEFINE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        R_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="oType != null">
+        O_TYPE,
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="menuId != null">
+        MENU_ID,
+      </if>
+      <if test="userSearch != null">
+        USER_SEARCH,
+      </if>
+      <if test="express != null">
+        EXPRESS,
+      </if>
+      <if test="excludeColCodes != null">
+        EXCLUDE_COL_CODES,
+      </if>
+      <if test="canOperate != null">
+        CAN_OPERATE,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="operateType != null">
+        OPERATE_TYPE,
+      </if>
+      <if test="formId != null">
+        FORM_ID,
+      </if>
+      <if test="flowId != null">
+        FLOW_ID,
+      </if>
+      <if test="canView != null">
+        CAN_VIEW,
+      </if>
+      <if test="hiddenParams != null">
+        HIDDEN_PARAMS,
+      </if>
+      <if test="paramsUrl != null">
+        PARAMS_URL,
+      </if>
+      <if test="canDelete != null">
+        CAN_DELETE,
+      </if>
+      <if test="canAdd != null">
+        CAN_ADD,
+      </if>
+      <if test="canUpdate != null">
+        CAN_UPDATE,
+      </if>
+      <if test="canExport != null">
+        CAN_EXPORT,
+      </if>
+      <if test="stepModuleId != null">
+        STEP_MODULE_ID,
+      </if>
+      <if test="multipleSelect != null">
+        MULTIPLE_SELECT,
+      </if>
+      <if test="toolPageUrl != null">
+        TOOL_PAGE_URL,
+      </if>
+      <if test="hiddenParamsForAdd != null">
+        HIDDEN_PARAMS_FOR_ADD,
+      </if>
+      <if test="hiddenParamsForEdit != null">
+        HIDDEN_PARAMS_FOR_EDIT,
+      </if>
+      <if test="paramsUrlForAdd != null">
+        PARAMS_URL_FOR_ADD,
+      </if>
+      <if test="paramsUrlForEdit != null">
+        PARAMS_URL_FOR_EDIT,
+      </if>
+      <if test="hiddenParamsForDelete != null">
+        HIDDEN_PARAMS_FOR_DELETE,
+      </if>
+      <if test="paramsUrlForDelete != null">
+        PARAMS_URL_FOR_DELETE,
+      </if>
+      <if test="paramsValue != null">
+        PARAMS_VALUE,
+      </if>
+      <if test="paramsValueForAdd != null">
+        PARAMS_VALUE_FOR_ADD,
+      </if>
+      <if test="paramsValueForEdit != null">
+        PARAMS_VALUE_FOR_EDIT,
+      </if>
+      <if test="paramsValueForDelete != null">
+        PARAMS_VALUE_FOR_DELETE,
+      </if>
+      <if test="selfQueryCondition != null">
+        SELF_QUERY_CONDITION,
+      </if>
+      <if test="showProcessFlowBtn != null">
+        SHOW_PROCESS_FLOW_BTN,
+      </if>
+      <if test="field2 != null">
+        FIELD2,
+      </if>
+      <if test="field3 != null">
+        FIELD3,
+      </if>
+      <if test="field4 != null">
+        FIELD4,
+      </if>
+      <if test="field5 != null">
+        FIELD5,
+      </if>
+      <if test="tableCode != null">
+        TABLE_CODE,
+      </if>
+      <if test="field1 != null">
+        FIELD1,
+      </if>
+      <if test="selfTableInfo != null">
+        SELF_TABLE_INFO,
+      </if>
+      <if test="rptCandelete != null">
+        RPT_CANDELETE,
+      </if>
+      <if test="rptCanedit != null">
+        RPT_CANEDIT,
+      </if>
+      <if test="canBatchProcessing != null">
+        CAN_BATCH_PROCESSING,
+      </if>
+      <if test="canMaintain != null">
+        CAN_MAINTAIN,
+      </if>
+      <if test="noFlowProxyid != null">
+        NO_FLOW_PROXYID,
+      </if>
+      <if test="colFieldParam != null">
+        COL_FIELD_PARAM,
+      </if>
+      <if test="sql != null">
+        SQL,
+      </if>
+      <if test="beforeSql != null">
+        BEFORE_SQL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="oType != null">
+        #{oType,jdbcType=DECIMAL},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null">
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="userSearch != null">
+        #{userSearch,jdbcType=CHAR},
+      </if>
+      <if test="express != null">
+        #{express,jdbcType=VARCHAR},
+      </if>
+      <if test="excludeColCodes != null">
+        #{excludeColCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="canOperate != null">
+        #{canOperate,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="operateType != null">
+        #{operateType,jdbcType=DECIMAL},
+      </if>
+      <if test="formId != null">
+        #{formId,jdbcType=DECIMAL},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=DECIMAL},
+      </if>
+      <if test="canView != null">
+        #{canView,jdbcType=DECIMAL},
+      </if>
+      <if test="hiddenParams != null">
+        #{hiddenParams,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrl != null">
+        #{paramsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="canDelete != null">
+        #{canDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="canAdd != null">
+        #{canAdd,jdbcType=DECIMAL},
+      </if>
+      <if test="canUpdate != null">
+        #{canUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="canExport != null">
+        #{canExport,jdbcType=DECIMAL},
+      </if>
+      <if test="stepModuleId != null">
+        #{stepModuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="multipleSelect != null">
+        #{multipleSelect,jdbcType=DECIMAL},
+      </if>
+      <if test="toolPageUrl != null">
+        #{toolPageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="hiddenParamsForAdd != null">
+        #{hiddenParamsForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hiddenParamsForEdit != null">
+        #{hiddenParamsForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrlForAdd != null">
+        #{paramsUrlForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrlForEdit != null">
+        #{paramsUrlForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="hiddenParamsForDelete != null">
+        #{hiddenParamsForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrlForDelete != null">
+        #{paramsUrlForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValue != null">
+        #{paramsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValueForAdd != null">
+        #{paramsValueForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValueForEdit != null">
+        #{paramsValueForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValueForDelete != null">
+        #{paramsValueForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="selfQueryCondition != null">
+        #{selfQueryCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="showProcessFlowBtn != null">
+        #{showProcessFlowBtn,jdbcType=DECIMAL},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="tableCode != null">
+        #{tableCode,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="selfTableInfo != null">
+        #{selfTableInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="rptCandelete != null">
+        #{rptCandelete,jdbcType=CHAR},
+      </if>
+      <if test="rptCanedit != null">
+        #{rptCanedit,jdbcType=CHAR},
+      </if>
+      <if test="canBatchProcessing != null">
+        #{canBatchProcessing,jdbcType=DECIMAL},
+      </if>
+      <if test="canMaintain != null">
+        #{canMaintain,jdbcType=DECIMAL},
+      </if>
+      <if test="noFlowProxyid != null">
+        #{noFlowProxyid,jdbcType=DECIMAL},
+      </if>
+      <if test="colFieldParam != null">
+        #{colFieldParam,jdbcType=VARCHAR},
+      </if>
+      <if test="sql != null">
+        #{sql,jdbcType=CLOB},
+      </if>
+      <if test="beforeSql != null">
+        #{beforeSql,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.entity.FlDefineExample" resultType="java.lang.Long">
+    select count(*) from FL_DEFINE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FL_DEFINE
+    <set>
+      <if test="record.rId != null">
+        R_ID = #{record.rId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oType != null">
+        O_TYPE = #{record.oType,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tableName != null">
+        TABLE_NAME = #{record.tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuId != null">
+        MENU_ID = #{record.menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSearch != null">
+        USER_SEARCH = #{record.userSearch,jdbcType=CHAR},
+      </if>
+      <if test="record.express != null">
+        EXPRESS = #{record.express,jdbcType=VARCHAR},
+      </if>
+      <if test="record.excludeColCodes != null">
+        EXCLUDE_COL_CODES = #{record.excludeColCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.canOperate != null">
+        CAN_OPERATE = #{record.canOperate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=DECIMAL},
+      </if>
+      <if test="record.operateType != null">
+        OPERATE_TYPE = #{record.operateType,jdbcType=DECIMAL},
+      </if>
+      <if test="record.formId != null">
+        FORM_ID = #{record.formId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.flowId != null">
+        FLOW_ID = #{record.flowId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.canView != null">
+        CAN_VIEW = #{record.canView,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hiddenParams != null">
+        HIDDEN_PARAMS = #{record.hiddenParams,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsUrl != null">
+        PARAMS_URL = #{record.paramsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.canDelete != null">
+        CAN_DELETE = #{record.canDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="record.canAdd != null">
+        CAN_ADD = #{record.canAdd,jdbcType=DECIMAL},
+      </if>
+      <if test="record.canUpdate != null">
+        CAN_UPDATE = #{record.canUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.canExport != null">
+        CAN_EXPORT = #{record.canExport,jdbcType=DECIMAL},
+      </if>
+      <if test="record.stepModuleId != null">
+        STEP_MODULE_ID = #{record.stepModuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.multipleSelect != null">
+        MULTIPLE_SELECT = #{record.multipleSelect,jdbcType=DECIMAL},
+      </if>
+      <if test="record.toolPageUrl != null">
+        TOOL_PAGE_URL = #{record.toolPageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hiddenParamsForAdd != null">
+        HIDDEN_PARAMS_FOR_ADD = #{record.hiddenParamsForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hiddenParamsForEdit != null">
+        HIDDEN_PARAMS_FOR_EDIT = #{record.hiddenParamsForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsUrlForAdd != null">
+        PARAMS_URL_FOR_ADD = #{record.paramsUrlForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsUrlForEdit != null">
+        PARAMS_URL_FOR_EDIT = #{record.paramsUrlForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hiddenParamsForDelete != null">
+        HIDDEN_PARAMS_FOR_DELETE = #{record.hiddenParamsForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsUrlForDelete != null">
+        PARAMS_URL_FOR_DELETE = #{record.paramsUrlForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsValue != null">
+        PARAMS_VALUE = #{record.paramsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsValueForAdd != null">
+        PARAMS_VALUE_FOR_ADD = #{record.paramsValueForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsValueForEdit != null">
+        PARAMS_VALUE_FOR_EDIT = #{record.paramsValueForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramsValueForDelete != null">
+        PARAMS_VALUE_FOR_DELETE = #{record.paramsValueForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="record.selfQueryCondition != null">
+        SELF_QUERY_CONDITION = #{record.selfQueryCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showProcessFlowBtn != null">
+        SHOW_PROCESS_FLOW_BTN = #{record.showProcessFlowBtn,jdbcType=DECIMAL},
+      </if>
+      <if test="record.field2 != null">
+        FIELD2 = #{record.field2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.field3 != null">
+        FIELD3 = #{record.field3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.field4 != null">
+        FIELD4 = #{record.field4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.field5 != null">
+        FIELD5 = #{record.field5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableCode != null">
+        TABLE_CODE = #{record.tableCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.field1 != null">
+        FIELD1 = #{record.field1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.selfTableInfo != null">
+        SELF_TABLE_INFO = #{record.selfTableInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rptCandelete != null">
+        RPT_CANDELETE = #{record.rptCandelete,jdbcType=CHAR},
+      </if>
+      <if test="record.rptCanedit != null">
+        RPT_CANEDIT = #{record.rptCanedit,jdbcType=CHAR},
+      </if>
+      <if test="record.canBatchProcessing != null">
+        CAN_BATCH_PROCESSING = #{record.canBatchProcessing,jdbcType=DECIMAL},
+      </if>
+      <if test="record.canMaintain != null">
+        CAN_MAINTAIN = #{record.canMaintain,jdbcType=DECIMAL},
+      </if>
+      <if test="record.noFlowProxyid != null">
+        NO_FLOW_PROXYID = #{record.noFlowProxyid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.colFieldParam != null">
+        COL_FIELD_PARAM = #{record.colFieldParam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sql != null">
+        SQL = #{record.sql,jdbcType=CLOB},
+      </if>
+      <if test="record.beforeSql != null">
+        BEFORE_SQL = #{record.beforeSql,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update FL_DEFINE
+    set R_ID = #{record.rId,jdbcType=DECIMAL},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      O_TYPE = #{record.oType,jdbcType=DECIMAL},
+      TABLE_NAME = #{record.tableName,jdbcType=VARCHAR},
+      MENU_ID = #{record.menuId,jdbcType=VARCHAR},
+      USER_SEARCH = #{record.userSearch,jdbcType=CHAR},
+      EXPRESS = #{record.express,jdbcType=VARCHAR},
+      EXCLUDE_COL_CODES = #{record.excludeColCodes,jdbcType=VARCHAR},
+      CAN_OPERATE = #{record.canOperate,jdbcType=DECIMAL},
+      TYPE = #{record.type,jdbcType=DECIMAL},
+      OPERATE_TYPE = #{record.operateType,jdbcType=DECIMAL},
+      FORM_ID = #{record.formId,jdbcType=DECIMAL},
+      FLOW_ID = #{record.flowId,jdbcType=DECIMAL},
+      CAN_VIEW = #{record.canView,jdbcType=DECIMAL},
+      HIDDEN_PARAMS = #{record.hiddenParams,jdbcType=VARCHAR},
+      PARAMS_URL = #{record.paramsUrl,jdbcType=VARCHAR},
+      CAN_DELETE = #{record.canDelete,jdbcType=DECIMAL},
+      CAN_ADD = #{record.canAdd,jdbcType=DECIMAL},
+      CAN_UPDATE = #{record.canUpdate,jdbcType=DECIMAL},
+      CAN_EXPORT = #{record.canExport,jdbcType=DECIMAL},
+      STEP_MODULE_ID = #{record.stepModuleId,jdbcType=DECIMAL},
+      MULTIPLE_SELECT = #{record.multipleSelect,jdbcType=DECIMAL},
+      TOOL_PAGE_URL = #{record.toolPageUrl,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_ADD = #{record.hiddenParamsForAdd,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_EDIT = #{record.hiddenParamsForEdit,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_ADD = #{record.paramsUrlForAdd,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_EDIT = #{record.paramsUrlForEdit,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_DELETE = #{record.hiddenParamsForDelete,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_DELETE = #{record.paramsUrlForDelete,jdbcType=VARCHAR},
+      PARAMS_VALUE = #{record.paramsValue,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_ADD = #{record.paramsValueForAdd,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_EDIT = #{record.paramsValueForEdit,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_DELETE = #{record.paramsValueForDelete,jdbcType=VARCHAR},
+      SELF_QUERY_CONDITION = #{record.selfQueryCondition,jdbcType=VARCHAR},
+      SHOW_PROCESS_FLOW_BTN = #{record.showProcessFlowBtn,jdbcType=DECIMAL},
+      FIELD2 = #{record.field2,jdbcType=VARCHAR},
+      FIELD3 = #{record.field3,jdbcType=VARCHAR},
+      FIELD4 = #{record.field4,jdbcType=VARCHAR},
+      FIELD5 = #{record.field5,jdbcType=VARCHAR},
+      TABLE_CODE = #{record.tableCode,jdbcType=VARCHAR},
+      FIELD1 = #{record.field1,jdbcType=VARCHAR},
+      SELF_TABLE_INFO = #{record.selfTableInfo,jdbcType=VARCHAR},
+      RPT_CANDELETE = #{record.rptCandelete,jdbcType=CHAR},
+      RPT_CANEDIT = #{record.rptCanedit,jdbcType=CHAR},
+      CAN_BATCH_PROCESSING = #{record.canBatchProcessing,jdbcType=DECIMAL},
+      CAN_MAINTAIN = #{record.canMaintain,jdbcType=DECIMAL},
+      NO_FLOW_PROXYID = #{record.noFlowProxyid,jdbcType=DECIMAL},
+      COL_FIELD_PARAM = #{record.colFieldParam,jdbcType=VARCHAR},
+      SQL = #{record.sql,jdbcType=CLOB},
+      BEFORE_SQL = #{record.beforeSql,jdbcType=CLOB}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FL_DEFINE
+    set R_ID = #{record.rId,jdbcType=DECIMAL},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      O_TYPE = #{record.oType,jdbcType=DECIMAL},
+      TABLE_NAME = #{record.tableName,jdbcType=VARCHAR},
+      MENU_ID = #{record.menuId,jdbcType=VARCHAR},
+      USER_SEARCH = #{record.userSearch,jdbcType=CHAR},
+      EXPRESS = #{record.express,jdbcType=VARCHAR},
+      EXCLUDE_COL_CODES = #{record.excludeColCodes,jdbcType=VARCHAR},
+      CAN_OPERATE = #{record.canOperate,jdbcType=DECIMAL},
+      TYPE = #{record.type,jdbcType=DECIMAL},
+      OPERATE_TYPE = #{record.operateType,jdbcType=DECIMAL},
+      FORM_ID = #{record.formId,jdbcType=DECIMAL},
+      FLOW_ID = #{record.flowId,jdbcType=DECIMAL},
+      CAN_VIEW = #{record.canView,jdbcType=DECIMAL},
+      HIDDEN_PARAMS = #{record.hiddenParams,jdbcType=VARCHAR},
+      PARAMS_URL = #{record.paramsUrl,jdbcType=VARCHAR},
+      CAN_DELETE = #{record.canDelete,jdbcType=DECIMAL},
+      CAN_ADD = #{record.canAdd,jdbcType=DECIMAL},
+      CAN_UPDATE = #{record.canUpdate,jdbcType=DECIMAL},
+      CAN_EXPORT = #{record.canExport,jdbcType=DECIMAL},
+      STEP_MODULE_ID = #{record.stepModuleId,jdbcType=DECIMAL},
+      MULTIPLE_SELECT = #{record.multipleSelect,jdbcType=DECIMAL},
+      TOOL_PAGE_URL = #{record.toolPageUrl,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_ADD = #{record.hiddenParamsForAdd,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_EDIT = #{record.hiddenParamsForEdit,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_ADD = #{record.paramsUrlForAdd,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_EDIT = #{record.paramsUrlForEdit,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_DELETE = #{record.hiddenParamsForDelete,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_DELETE = #{record.paramsUrlForDelete,jdbcType=VARCHAR},
+      PARAMS_VALUE = #{record.paramsValue,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_ADD = #{record.paramsValueForAdd,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_EDIT = #{record.paramsValueForEdit,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_DELETE = #{record.paramsValueForDelete,jdbcType=VARCHAR},
+      SELF_QUERY_CONDITION = #{record.selfQueryCondition,jdbcType=VARCHAR},
+      SHOW_PROCESS_FLOW_BTN = #{record.showProcessFlowBtn,jdbcType=DECIMAL},
+      FIELD2 = #{record.field2,jdbcType=VARCHAR},
+      FIELD3 = #{record.field3,jdbcType=VARCHAR},
+      FIELD4 = #{record.field4,jdbcType=VARCHAR},
+      FIELD5 = #{record.field5,jdbcType=VARCHAR},
+      TABLE_CODE = #{record.tableCode,jdbcType=VARCHAR},
+      FIELD1 = #{record.field1,jdbcType=VARCHAR},
+      SELF_TABLE_INFO = #{record.selfTableInfo,jdbcType=VARCHAR},
+      RPT_CANDELETE = #{record.rptCandelete,jdbcType=CHAR},
+      RPT_CANEDIT = #{record.rptCanedit,jdbcType=CHAR},
+      CAN_BATCH_PROCESSING = #{record.canBatchProcessing,jdbcType=DECIMAL},
+      CAN_MAINTAIN = #{record.canMaintain,jdbcType=DECIMAL},
+      NO_FLOW_PROXYID = #{record.noFlowProxyid,jdbcType=DECIMAL},
+      COL_FIELD_PARAM = #{record.colFieldParam,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.FlDefineWithBLOBs">
+    update FL_DEFINE
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="oType != null">
+        O_TYPE = #{oType,jdbcType=DECIMAL},
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null">
+        MENU_ID = #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="userSearch != null">
+        USER_SEARCH = #{userSearch,jdbcType=CHAR},
+      </if>
+      <if test="express != null">
+        EXPRESS = #{express,jdbcType=VARCHAR},
+      </if>
+      <if test="excludeColCodes != null">
+        EXCLUDE_COL_CODES = #{excludeColCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="canOperate != null">
+        CAN_OPERATE = #{canOperate,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="operateType != null">
+        OPERATE_TYPE = #{operateType,jdbcType=DECIMAL},
+      </if>
+      <if test="formId != null">
+        FORM_ID = #{formId,jdbcType=DECIMAL},
+      </if>
+      <if test="flowId != null">
+        FLOW_ID = #{flowId,jdbcType=DECIMAL},
+      </if>
+      <if test="canView != null">
+        CAN_VIEW = #{canView,jdbcType=DECIMAL},
+      </if>
+      <if test="hiddenParams != null">
+        HIDDEN_PARAMS = #{hiddenParams,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrl != null">
+        PARAMS_URL = #{paramsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="canDelete != null">
+        CAN_DELETE = #{canDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="canAdd != null">
+        CAN_ADD = #{canAdd,jdbcType=DECIMAL},
+      </if>
+      <if test="canUpdate != null">
+        CAN_UPDATE = #{canUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="canExport != null">
+        CAN_EXPORT = #{canExport,jdbcType=DECIMAL},
+      </if>
+      <if test="stepModuleId != null">
+        STEP_MODULE_ID = #{stepModuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="multipleSelect != null">
+        MULTIPLE_SELECT = #{multipleSelect,jdbcType=DECIMAL},
+      </if>
+      <if test="toolPageUrl != null">
+        TOOL_PAGE_URL = #{toolPageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="hiddenParamsForAdd != null">
+        HIDDEN_PARAMS_FOR_ADD = #{hiddenParamsForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hiddenParamsForEdit != null">
+        HIDDEN_PARAMS_FOR_EDIT = #{hiddenParamsForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrlForAdd != null">
+        PARAMS_URL_FOR_ADD = #{paramsUrlForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrlForEdit != null">
+        PARAMS_URL_FOR_EDIT = #{paramsUrlForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="hiddenParamsForDelete != null">
+        HIDDEN_PARAMS_FOR_DELETE = #{hiddenParamsForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsUrlForDelete != null">
+        PARAMS_URL_FOR_DELETE = #{paramsUrlForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValue != null">
+        PARAMS_VALUE = #{paramsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValueForAdd != null">
+        PARAMS_VALUE_FOR_ADD = #{paramsValueForAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValueForEdit != null">
+        PARAMS_VALUE_FOR_EDIT = #{paramsValueForEdit,jdbcType=VARCHAR},
+      </if>
+      <if test="paramsValueForDelete != null">
+        PARAMS_VALUE_FOR_DELETE = #{paramsValueForDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="selfQueryCondition != null">
+        SELF_QUERY_CONDITION = #{selfQueryCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="showProcessFlowBtn != null">
+        SHOW_PROCESS_FLOW_BTN = #{showProcessFlowBtn,jdbcType=DECIMAL},
+      </if>
+      <if test="field2 != null">
+        FIELD2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        FIELD3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        FIELD4 = #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        FIELD5 = #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="tableCode != null">
+        TABLE_CODE = #{tableCode,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        FIELD1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="selfTableInfo != null">
+        SELF_TABLE_INFO = #{selfTableInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="rptCandelete != null">
+        RPT_CANDELETE = #{rptCandelete,jdbcType=CHAR},
+      </if>
+      <if test="rptCanedit != null">
+        RPT_CANEDIT = #{rptCanedit,jdbcType=CHAR},
+      </if>
+      <if test="canBatchProcessing != null">
+        CAN_BATCH_PROCESSING = #{canBatchProcessing,jdbcType=DECIMAL},
+      </if>
+      <if test="canMaintain != null">
+        CAN_MAINTAIN = #{canMaintain,jdbcType=DECIMAL},
+      </if>
+      <if test="noFlowProxyid != null">
+        NO_FLOW_PROXYID = #{noFlowProxyid,jdbcType=DECIMAL},
+      </if>
+      <if test="colFieldParam != null">
+        COL_FIELD_PARAM = #{colFieldParam,jdbcType=VARCHAR},
+      </if>
+      <if test="sql != null">
+        SQL = #{sql,jdbcType=CLOB},
+      </if>
+      <if test="beforeSql != null">
+        BEFORE_SQL = #{beforeSql,jdbcType=CLOB},
+      </if>
+    </set>
+    where R_ID = #{rId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.entity.FlDefineWithBLOBs">
+    update FL_DEFINE
+    set NAME = #{name,jdbcType=VARCHAR},
+      O_TYPE = #{oType,jdbcType=DECIMAL},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      MENU_ID = #{menuId,jdbcType=VARCHAR},
+      USER_SEARCH = #{userSearch,jdbcType=CHAR},
+      EXPRESS = #{express,jdbcType=VARCHAR},
+      EXCLUDE_COL_CODES = #{excludeColCodes,jdbcType=VARCHAR},
+      CAN_OPERATE = #{canOperate,jdbcType=DECIMAL},
+      TYPE = #{type,jdbcType=DECIMAL},
+      OPERATE_TYPE = #{operateType,jdbcType=DECIMAL},
+      FORM_ID = #{formId,jdbcType=DECIMAL},
+      FLOW_ID = #{flowId,jdbcType=DECIMAL},
+      CAN_VIEW = #{canView,jdbcType=DECIMAL},
+      HIDDEN_PARAMS = #{hiddenParams,jdbcType=VARCHAR},
+      PARAMS_URL = #{paramsUrl,jdbcType=VARCHAR},
+      CAN_DELETE = #{canDelete,jdbcType=DECIMAL},
+      CAN_ADD = #{canAdd,jdbcType=DECIMAL},
+      CAN_UPDATE = #{canUpdate,jdbcType=DECIMAL},
+      CAN_EXPORT = #{canExport,jdbcType=DECIMAL},
+      STEP_MODULE_ID = #{stepModuleId,jdbcType=DECIMAL},
+      MULTIPLE_SELECT = #{multipleSelect,jdbcType=DECIMAL},
+      TOOL_PAGE_URL = #{toolPageUrl,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_ADD = #{hiddenParamsForAdd,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_EDIT = #{hiddenParamsForEdit,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_ADD = #{paramsUrlForAdd,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_EDIT = #{paramsUrlForEdit,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_DELETE = #{hiddenParamsForDelete,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_DELETE = #{paramsUrlForDelete,jdbcType=VARCHAR},
+      PARAMS_VALUE = #{paramsValue,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_ADD = #{paramsValueForAdd,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_EDIT = #{paramsValueForEdit,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_DELETE = #{paramsValueForDelete,jdbcType=VARCHAR},
+      SELF_QUERY_CONDITION = #{selfQueryCondition,jdbcType=VARCHAR},
+      SHOW_PROCESS_FLOW_BTN = #{showProcessFlowBtn,jdbcType=DECIMAL},
+      FIELD2 = #{field2,jdbcType=VARCHAR},
+      FIELD3 = #{field3,jdbcType=VARCHAR},
+      FIELD4 = #{field4,jdbcType=VARCHAR},
+      FIELD5 = #{field5,jdbcType=VARCHAR},
+      TABLE_CODE = #{tableCode,jdbcType=VARCHAR},
+      FIELD1 = #{field1,jdbcType=VARCHAR},
+      SELF_TABLE_INFO = #{selfTableInfo,jdbcType=VARCHAR},
+      RPT_CANDELETE = #{rptCandelete,jdbcType=CHAR},
+      RPT_CANEDIT = #{rptCanedit,jdbcType=CHAR},
+      CAN_BATCH_PROCESSING = #{canBatchProcessing,jdbcType=DECIMAL},
+      CAN_MAINTAIN = #{canMaintain,jdbcType=DECIMAL},
+      NO_FLOW_PROXYID = #{noFlowProxyid,jdbcType=DECIMAL},
+      COL_FIELD_PARAM = #{colFieldParam,jdbcType=VARCHAR},
+      SQL = #{sql,jdbcType=CLOB},
+      BEFORE_SQL = #{beforeSql,jdbcType=CLOB}
+    where R_ID = #{rId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.FlDefine">
+    update FL_DEFINE
+    set NAME = #{name,jdbcType=VARCHAR},
+      O_TYPE = #{oType,jdbcType=DECIMAL},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      MENU_ID = #{menuId,jdbcType=VARCHAR},
+      USER_SEARCH = #{userSearch,jdbcType=CHAR},
+      EXPRESS = #{express,jdbcType=VARCHAR},
+      EXCLUDE_COL_CODES = #{excludeColCodes,jdbcType=VARCHAR},
+      CAN_OPERATE = #{canOperate,jdbcType=DECIMAL},
+      TYPE = #{type,jdbcType=DECIMAL},
+      OPERATE_TYPE = #{operateType,jdbcType=DECIMAL},
+      FORM_ID = #{formId,jdbcType=DECIMAL},
+      FLOW_ID = #{flowId,jdbcType=DECIMAL},
+      CAN_VIEW = #{canView,jdbcType=DECIMAL},
+      HIDDEN_PARAMS = #{hiddenParams,jdbcType=VARCHAR},
+      PARAMS_URL = #{paramsUrl,jdbcType=VARCHAR},
+      CAN_DELETE = #{canDelete,jdbcType=DECIMAL},
+      CAN_ADD = #{canAdd,jdbcType=DECIMAL},
+      CAN_UPDATE = #{canUpdate,jdbcType=DECIMAL},
+      CAN_EXPORT = #{canExport,jdbcType=DECIMAL},
+      STEP_MODULE_ID = #{stepModuleId,jdbcType=DECIMAL},
+      MULTIPLE_SELECT = #{multipleSelect,jdbcType=DECIMAL},
+      TOOL_PAGE_URL = #{toolPageUrl,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_ADD = #{hiddenParamsForAdd,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_EDIT = #{hiddenParamsForEdit,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_ADD = #{paramsUrlForAdd,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_EDIT = #{paramsUrlForEdit,jdbcType=VARCHAR},
+      HIDDEN_PARAMS_FOR_DELETE = #{hiddenParamsForDelete,jdbcType=VARCHAR},
+      PARAMS_URL_FOR_DELETE = #{paramsUrlForDelete,jdbcType=VARCHAR},
+      PARAMS_VALUE = #{paramsValue,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_ADD = #{paramsValueForAdd,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_EDIT = #{paramsValueForEdit,jdbcType=VARCHAR},
+      PARAMS_VALUE_FOR_DELETE = #{paramsValueForDelete,jdbcType=VARCHAR},
+      SELF_QUERY_CONDITION = #{selfQueryCondition,jdbcType=VARCHAR},
+      SHOW_PROCESS_FLOW_BTN = #{showProcessFlowBtn,jdbcType=DECIMAL},
+      FIELD2 = #{field2,jdbcType=VARCHAR},
+      FIELD3 = #{field3,jdbcType=VARCHAR},
+      FIELD4 = #{field4,jdbcType=VARCHAR},
+      FIELD5 = #{field5,jdbcType=VARCHAR},
+      TABLE_CODE = #{tableCode,jdbcType=VARCHAR},
+      FIELD1 = #{field1,jdbcType=VARCHAR},
+      SELF_TABLE_INFO = #{selfTableInfo,jdbcType=VARCHAR},
+      RPT_CANDELETE = #{rptCandelete,jdbcType=CHAR},
+      RPT_CANEDIT = #{rptCanedit,jdbcType=CHAR},
+      CAN_BATCH_PROCESSING = #{canBatchProcessing,jdbcType=DECIMAL},
+      CAN_MAINTAIN = #{canMaintain,jdbcType=DECIMAL},
+      NO_FLOW_PROXYID = #{noFlowProxyid,jdbcType=DECIMAL},
+      COL_FIELD_PARAM = #{colFieldParam,jdbcType=VARCHAR}
+    where R_ID = #{rId,jdbcType=DECIMAL}
+  </update>
+</mapper>
